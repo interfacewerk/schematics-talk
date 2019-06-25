@@ -16,7 +16,17 @@ npm install -g @angular/cli
 
 - Create a new schematic called `licensedComponent`.
 - Use the `externalSchematic()` function and chain the external angular component rule with your custom rule
-- Write a rule function that looks up the 
+- Write a rule function that looks up the newly created files using the `getDir` and `visit` functions.
+
+```
+tree.getDir("./src/app/" + options.name).visit(filePath => {
+  if (!filePath.endsWith(".ts")) {
+    return;
+  }
+
+  // Read content and overwrite file
+});
+```
 
 ### Run the schematic
 

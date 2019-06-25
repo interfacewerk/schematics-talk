@@ -1,0 +1,32 @@
+{
+  "name": "schematics",
+  "version": "0.0.0",
+  "description": "A blank schematics",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && npm run build:copy",
+    "build:copy": "copyfiles -u 1 src/**/{collection.json,schema.json,files/**,files/.**} -a dist/",
+    "test": "npm run build && jasmine dist/**/*_spec.js",
+
+    "build:clean:launch": "npm run build && npm run clean && npm run launch",
+    "launch": "cd sandbox && npm install",
+    "clean": "git checkout HEAD -- sandbox && git clean -f -d sandbox",
+    "link": "npm link && cd sandbox && npm link schematics"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "author": "",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^8.0.4",
+    "@angular-devkit/schematics": "^8.0.4",
+    "@types/jasmine": "^3.3.9",
+    "@types/node": "^8.0.31",
+    "jasmine": "^3.3.1",
+    "typescript": "~3.4.3"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.1.0"
+  }
+}

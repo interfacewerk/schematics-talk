@@ -1,0 +1,9 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "readme": {
+      "description": "Create a readme",
+      "factory": "./schematics/index#readme"
+    }
+  }
+}

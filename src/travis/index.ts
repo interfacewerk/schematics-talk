@@ -6,8 +6,6 @@ import { Rule, SchematicContext, Tree, chain, apply, url, applyTemplates, move, 
 export function travis(options: any): Rule {
   return (_tree: Tree, _context: SchematicContext) => {
 
-    _context.logger.log('info', JSON.stringify(options))
-
     const templateSource = apply(url('./files'), [
       applyTemplates(options),
       move('/')

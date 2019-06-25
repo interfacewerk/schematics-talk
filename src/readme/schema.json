@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "travis",
+  "title": "Add travis configuration file",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "default": "# Hey I am a readme file",
+      "x-prompt": "Do you want to change the README content?"
+    }
+  }
+}

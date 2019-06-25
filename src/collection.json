@@ -10,6 +10,11 @@
       "description": "Add travis",
       "factory": "./travis/index#travis",
       "schema": "./travis/schema.json"
+    },
+    "licensedComponent": {
+      "description": "Create a component with a license file",
+      "factory": "./licensedComponent/index",
+      "schema": "./licensedComponent/schema.json"
     }
   }
 }

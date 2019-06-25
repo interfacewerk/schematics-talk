@@ -10,7 +10,9 @@
     "build:clean:launch": "npm run build && npm run clean && npm run launch",
     "launch": "cd sandbox && npm install",
     "clean": "git checkout HEAD -- sandbox && git clean -f -d sandbox",
-    "link": "npm link && cd sandbox && npm link schematics"
+    "link": "npm link && cd sandbox && npm link schematics",
+    
+    "dev:license": "npm run build:clean:launch && cd sandbox && ng g schematics:licensedComponent"
   },
   "keywords": [
     "schematics"

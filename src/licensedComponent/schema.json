@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "navigation",
+  "title": "Create a navigation",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "x-prompt": "How do you like to name the component?"
+    },
+    "license": {
+      "type": "string",
+      "enum": ["MIT", "GNU GPLv3"],
+      "x-prompt": "What license should be generated?"
+    }
+  },
+  "required": [
+    "name",
+    "license"
+  ]
+}

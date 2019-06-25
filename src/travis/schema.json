@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "travis",
+  "title": "Add travis configuration file",
+  "type": "object",
+  "properties": {
+    "coverage": {
+      "type": "boolean",
+      "default": true,
+      "x-prompt": "Do you want to add coverage support?"
+    },
+    "node": {
+      "type": "string",
+      "default": "10.15.3",
+      "x-prompt": "Which node version do you want to use?"
+    }
+  }
+}

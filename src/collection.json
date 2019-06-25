@@ -3,7 +3,13 @@
   "schematics": {
     "readme": {
       "description": "Create a readme",
-      "factory": "./schematics/index#readme"
+      "factory": "./readme/index#readme",
+      "schema": "./readme/schema.json"
+    },
+    "travis": {
+      "description": "Add travis",
+      "factory": "./travis/index#travis",
+      "schema": "./travis/schema.json"
     }
   }
 }

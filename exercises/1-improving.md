@@ -2,7 +2,33 @@
 
 ### Template Files
 
-Create a new schematic which uses template files. Create a files folder, inside the schematic folder and use template strings inside of it. Use the provided strings utility.
+Create a new schematic which uses template files, e.g. `travis`. Create a files folder inside the `travis`schematic folder and use template strings inside of it. Use the provided strings utility.
+
+Use `tree.create` to create the `.travis.yml` file directly in your root
+directory. The template could look like this
+
+```
+language: node_js
+node_js:
+ - <%= node %>
+install:
+ - npm install
+script:
+ - npm run build
+ - npm run lint
+ - npm run test
+```
+
+### Chaining
+
+Write a second rule inside the *index.ts* of your previously created `travis` schematic.
+This rule function should append the text to the `.travis.yml` file.
+
+```
+after_script: npm run coverage
+```
+
+Now instead of returning the merged tree in the default rule function, use the `chain` method and chain the template file *merge* with the coverage rule.
 
 ### Abstract Syntax Tree (AST)
 

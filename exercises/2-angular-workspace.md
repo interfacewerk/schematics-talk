@@ -9,23 +9,27 @@ npm install -g @angular/cli
 ### Set up a sandbox environment
 
 - In the terminal go to the root directory of your schematics project
-- Run `ng new sandbox`, do not change the *sandbox* name
+- Run `ng new sandbox`, do not change the *sandbox* name and track all files with git
 - Copy the first two blocks from the scripts in the `package.json` file into your projects scripts
-- For each schematic create a new script `"dev:schematicName": "npm run build:clean:launch && cd sandbox && ng g collectionName:schematicName"`
-- Test your existing schematics against the workspace by running the commands
+
+### Creating a licensedComponent schematic
+
+- Create a new schematic called `licensedComponent`.
+- Use the `externalSchematic()` function and chain the external angular component rule with your custom rule
+- Write a rule function that looks up the newly created files using the `getDir` and `visit` functions.
+
+```
+tree.getDir("./src/app/" + options.name).visit(filePath => {
+  if (!filePath.endsWith(".ts")) {
+    return;
+  }
+
+  // Read content and overwrite file
+});
+```
+
+### Run the schematic
+
+- Add a `"dev:license": "npm run build:clean:launch && cd sandbox && ng g schematics:licensedComponent"` script to `package.json`
+- Test your existing schematics against the workspace by running the command
 - Reset your workspace with the `npm run clean` command
-
-### Read the default project
-
-- Use the `getWorkspace` function to get the list of projects
-- Use the `context.logger.log` function to display all available projects in the workspace.
-
-### Adding a Component to an NgModule
-
-- Create a `modulePath` variable (path to the ng-module file)
-- Create a `sourceText` variable containing the content of the ng-module file using `tree.read(modulePath)` and convert the buffer to a string
-- Create an AST sourceFile using `createSourceFile(modulePath, sourceText, ScriptTarget.Latest, true);`
-- Create a `componentPath` variable (path to the component to insert)
-- Use the `buildRelativePath` utility function from `@schematics/angular/utility/find-module`
-- Use the `addDeclarationToModule(source, modulePath, classifiedName, relativePath)` from `@schematics/angular/utility/ast-utils`
-- Insert the changes using the tree update `recorder`, [more](https://github.com/interfacewerk/schematics/wiki/3.6-UpdateRecorder)
